@@ -1,0 +1,21 @@
+Description: Stack para criar um parâmetro no Parameter Store
+
+Parameters:
+  ParameterName:
+    Type: String
+    Description: Nome do parâmetro
+    Default: "/config/spring-boot-localstack_localstack/helloWorld"
+  ParameterValue:
+    Type: String
+    Description: Valor do parâmetro
+    Default: "Hello World Parameter Store"
+Resources:
+  MyParameter:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Ref ParameterName
+      Type: String
+      Value: !Ref ParameterValue
+      Description: Parâmetro criado pelo CloudFormation
+
+
